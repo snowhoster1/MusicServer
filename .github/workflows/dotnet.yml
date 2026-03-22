@@ -47,22 +47,9 @@ jobs:
         name: music-server
         path: ./publish
     
-    - name: Azure login
-      run: |
-        echo "${{ secrets.AZURE_PUBLISH_PROFILE }}" > publishprofile.xml
-        az webapp deployment secret --help || true
-        az login --service-principal --username "$AZURE_APP_ID" --password "$AZURE_PASSWORD" --tenant "$AZURE_TENANT_ID" || true
-    
-    - name: Azure WebApp Deploy via Zip
-      run: |
-        echo "${{ secrets.AZURE_PUBLISH_PROFILE }}" > publishprofile.xml
-        # Extract values using grep/sed
-        PUBLISH_URL=$(grep -oP 'publishUrl="\K[^"]+' publishprofile.xml)
-        PUBLISH_USER=$(grep -oP 'userName="\$\K[^"]+' publishprofile.xml)
-        PUBLISH_PWD=$(grep -oP 'userPWD="\K[^"]+' publishprofile.xml)
-        
-        # Upload using curl
-        curl -X POST -u "$PUBLISH_USER:$PUBLISH_PWD" \
-          -H "Content-Type: application/zip" \
-          --data-binary @publish.zip \
-          "$PUBLISH_URL/api/zipdeploy"
+    - name: Azure WebApp Deploy
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: 'MusicServer'
+        package: ./publish
+        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
