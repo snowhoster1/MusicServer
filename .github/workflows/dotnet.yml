@@ -18,13 +18,13 @@ jobs:
         dotnet-version: '10.0'
     
     - name: Restore
-      run: dotnet restore MusicServer/MusicServer.csproj
+      run: dotnet restore
     
     - name: Build
-      run: dotnet build MusicServer/MusicServer.csproj -c Release --no-restore
+      run: dotnet build -c Release
     
     - name: Publish
-      run: dotnet publish MusicServer/MusicServer.csproj -c Release --no-build -o ./publish
+      run: dotnet publish -c Release -o ./publish
 
   deploy:
     needs: build
