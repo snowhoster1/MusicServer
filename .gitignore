@@ -1,0 +1,33 @@
+# Built filers
+#bin/
+#obj/
+
+# V#E
+.nugget/
+iob/
+src/bin/
+src/obj;
+
+msbin/
+bcc/
+
+Nuget
+ngit/ignore.
+n
+.git/ico/
+n
+.git/hr/
+n.git/refs/
+n.git/logs/
+# Deligt
+.deleteskey/
+secret/
+.env/
+
+# Compiled
+bin/
+obj
+obj_.
+# NetStandard
+Properties./project.toolsjson.json
+/properties-toolsjson.json
