@@ -1,3 +1,5 @@
+using Microsoft.Extensions.FileProviders;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,13 +19,6 @@ if (!Directory.Exists(contentRootMusic))
     Directory.CreateDirectory(contentRootMusic);
 }
 
-// Copy music files from source if running from publish
-var sourceMusic = Path.Combine(builder.Environment.ContentRootPath, "music");
-if (Directory.Exists(sourceMusic) && !Directory.Exists(musicPath))
-{
-    Directory.CreateDirectory(musicPath);
-}
-
 Console.WriteLine($"Music path: {musicPath}");
 Console.WriteLine($"Content root: {builder.Environment.ContentRootPath}");
 
@@ -39,13 +34,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-// Serve music files - check both locations
-var musicProvider = new PhysicalFileProvider(musicPath);
-if (!Directory.Exists(musicPath))
-{
-    Console.WriteLine("Warning: music directory not found");
-}
-
+// Serve music files
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(musicPath),
