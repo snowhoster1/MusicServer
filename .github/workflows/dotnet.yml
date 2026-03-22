@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and Deploy to Azure
 
 on:
   push:
@@ -29,6 +29,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
     steps:
     - uses: actions/checkout@v4
     
@@ -38,8 +40,11 @@ jobs:
         name: music-server
         path: ./publish
     
-    - name: Deploy to Render
-      uses: render-oss/deploy-to-render@v1
+    - name: Azure WebApp Deploy
+      uses: azure/webapps-deploy@v3
       with:
-        apiKey: ${{ secrets.RENDER_API_KEY }}
-        serviceId: ${{ secrets.RENDER_SERVICE_ID }}
+        app-name: 'MusicServer'
+        package: ./publish
+        slot-name: 'production'
+      env:
+        AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_PUBLISH_PROFILE }}
