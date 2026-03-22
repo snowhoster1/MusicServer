@@ -1,0 +1,53 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0'
+    
+    - name: Restore dependencies
+      run: dotnet restore MusicServer/MusicServer.csproj
+    
+    - name: Build
+      run: dotnet build MusicServer/MusicServer.csproj -c Release --no-restore
+    
+    - name: Publish
+      run: dotnet publish MusicServer/MusicServer.csproj -c Release --no-build -o ./publish --property:PublishSingleFile=false
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: music-server
+        path: ./publish
+
+  deploy-azure:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: music-server
+        path: ./publish
+    
+    - name: Azure WebApp Deploy
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: 'MusicServer'
+        slot-name: 'production'
+        package: ./publish
+      env:
+        AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_PUBLISH_PROFILE }}
