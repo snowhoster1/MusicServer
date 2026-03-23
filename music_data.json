@@ -28,6 +28,15 @@
   },
   {
     "Id": 4,
+    "FileName": "linlin_official.mp3",
+    "OriginalFileName": "linlin_official.mp3",
+    "Category": "霖霖",
+    "CreatedAt": "2026-03-23T18:54:00",
+    "FileSize": 656877,
+    "Description": "霖霖之歌（有歌詞男聲）"
+  },
+  {
+    "Id": 5,
     "FileName": "ai_lobster_song.mp3",
     "OriginalFileName": "ai_lobster_song.mp3",
     "Category": "AI小龍蝦",
@@ -36,7 +45,7 @@
     "Description": "AI小龍蝦之歌"
   },
   {
-    "Id": 5,
+    "Id": 6,
     "FileName": "dinner_blues.mp3",
     "OriginalFileName": "dinner_blues.mp3",
     "Category": "晚上吃什麼",
@@ -45,21 +54,12 @@
     "Description": "晚上吃什麼的煩惱"
   },
   {
-    "Id": 6,
+    "Id": 7,
     "FileName": "linlin_song.mp3",
     "OriginalFileName": "linlin_song.mp3",
     "Category": "霖霖",
     "CreatedAt": "2026-03-23T18:42:00",
     "FileSize": 3008877,
     "Description": "關於厲害的電腦工程師霖霖"
-  },
-  {
-    "Id": 7,
-    "FileName": "linlin_vocal.mp3",
-    "OriginalFileName": "linlin_vocal.mp3",
-    "Category": "霖霖",
-    "CreatedAt": "2026-03-23T18:47:00",
-    "FileSize": 656877,
-    "Description": "霖霖之歌（有歌詞）"
   }
 ]
