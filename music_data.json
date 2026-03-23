@@ -34,5 +34,14 @@
     "CreatedAt": "2026-03-23T18:42:00",
     "FileSize": 3008877,
     "Description": "關於厲害的電腦工程師霖霖"
+  },
+  {
+    "Id": 5,
+    "FileName": "linlin_vocal.mp3",
+    "OriginalFileName": "linlin_vocal.mp3",
+    "Category": "霖霖",
+    "CreatedAt": "2026-03-23T18:47:00",
+    "FileSize": 656877,
+    "Description": "霖霖之歌（有歌詞）"
   }
 ]
