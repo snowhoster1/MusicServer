@@ -7,7 +7,7 @@
     "CreatedAt": "2026-03-21T20:38:00",
     "FileSize": 960621,
     "Description": "獻給 YiYi 的中文歌（有歌詞）",
-    "Lyrics": " YiYi  YiYi 親愛的你\n每天每天都想著你\n春天風兒吹過心裡\n你是我的小確幸"
+    "Lyrics": "YiYi  YiYi 親愛的你\n每天每天都想著你\n春天風兒吹過心裡\n你是我的小確幸"
   },
   {
     "Id": 2,
@@ -68,5 +68,15 @@
     "FileSize": 3008877,
     "Description": "關於厲害的電腦工程師霖霖",
     "Lyrics": ""
+  },
+  {
+    "Id": 8,
+    "FileName": "dont_want_work.mp3",
+    "OriginalFileName": "dont_want_work.mp3",
+    "Category": "不想上班",
+    "CreatedAt": "2026-03-23T19:18:00",
+    "FileSize": 656877,
+    "Description": "不想上班（改編飛鳥和蟬）",
+    "Lyrics": "你說鬧鐘最對罪惡\n如咖啡灑在鍵盤上\n星期一的早上我睜開眼\n我們有遲到的時間\n\n你說薪水最難滿足\n在冷氣房的小隔間\n年假用完就得繼續上班\n錢包的痛也不再遙遠\n\n你驕傲地打卡\n我棲息的周一\n聽不見的抱怨 重複過很多天\nKPI的壓力被老闆吹遠\n吹遠假期的最後 吹遠下班的瞬間"
   }
 ]
