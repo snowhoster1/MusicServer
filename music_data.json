@@ -87,7 +87,7 @@
     "CreatedAt": "2026-03-23T23:19:00",
     "FileSize": 656877,
     "Description": "喵喵歌（有歌詞）",
-    "Lyrics": "喵喵喵 喵喵喵\n小貓咪 快過來\n毛茸茸的身體 萌萌的大眼睛\n每天撒嬌黏著我"
+    "Lyrics": "喵喵喵 喵喵喵\n小貓咪 快過來\n毛茸茸的身體 萌萌的大眼睛"
   },
   {
     "Id": 10,
@@ -97,6 +97,16 @@
     "CreatedAt": "2026-03-24T06:30:00",
     "FileSize": 656877,
     "Description": "貓貓歌（有歌詞）",
-    "Lyrics": "小貓小貓 喵喵叫\n跳上沙發 蹭蹭腳\n呼嚕呼嚕 撒嬌娇\n你是我的心肝寶貝\n\n喵喵喵 喵喵喵\n毛茸茸的尾巴搖啊搖\n、愛你哟"
+    "Lyrics": "小貓小貓 喵喵叫\n跳上沙發 蹭蹭腳\n呼嚕呼嚕 撒嬌娇\n你是我的心肝寶貝"
+  },
+  {
+    "Id": 11,
+    "FileName": "song_for_yiyi_v2.mp3",
+    "OriginalFileName": "song_for_yiyi_v2.mp3",
+    "Category": "給 YiYi",
+    "CreatedAt": "2026-03-25T01:02:00",
+    "FileSize": 656877,
+    "Description": "給 YiYi 的歌",
+    "Lyrics": "YiYi  YiYi 我愛你\n你是我的唯一\n每天只想著你\n我的心只為你跳動"
   }
 ]
