@@ -108,5 +108,15 @@
     "FileSize": 656877,
     "Description": "給 YiYi 的歌",
     "Lyrics": "YiYi  YiYi 我愛你\n你是我的唯一\n每天只想著你\n我的心只為你跳動"
+  },
+  {
+    "Id": 12,
+    "FileName": "dont_want_work_v2.mp3",
+    "OriginalFileName": "dont_want_work_v2.mp3",
+    "Category": "不想上班",
+    "CreatedAt": "2026-03-26T06:52:00",
+    "FileSize": 928749,
+    "Description": "不想上班 V2",
+    "Lyrics": "星期一早上的鬧鐘\n就像犯罪的警報\n我只想躲在被子裡\n繼續做我的白日夢\n\n不想上班不想上班\n只想在家發懶\n老板的任務太繁重\n我的心情好沉重"
   }
 ]
