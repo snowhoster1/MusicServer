@@ -118,5 +118,14 @@
     "FileSize": 928749,
     "Description": "不想上班 V2",
     "Lyrics": "星期一早上的鬧鐘\n就像犯罪的警報\n我只想躲在被子裡\n繼續做我的白日夢\n\n不想上班不想上班\n只想在家發懶\n老板的任務太繁重\n我的心情好沉重"
+  },
+  {
+    "Id": 13,
+    "FileName": "今天可以不去嗎.mp3",
+    "OriginalFileName": "今天可以不去嗎.mp3",
+    "Category": "中文",
+    "CreatedAt": "2026-03-27T20:44:49+0800",
+    "FileSize": 118,
+    "Description": "Demo song added via PR"
   }
 ]
