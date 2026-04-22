@@ -23,9 +23,10 @@ except Exception:
 
 
 def generate_with_suno(title: str, out_path: Path):
-    api_key = os.environ.get('SUNO_API_KEY')
+    # Support either SUNO_API_KEY (preferred) or SUNO_KEY (existing secret name in this repo)
+    api_key = os.environ.get('SUNO_API_KEY') or os.environ.get('SUNO_KEY')
     if not api_key:
-        raise RuntimeError('Suno API key missing. Set SUNO_API_KEY in environment or GitHub secrets.')
+        raise RuntimeError('Suno API key missing. Set SUNO_API_KEY or SUNO_KEY in environment or GitHub secrets.')
     # Minimal example using a hypothetical Suno REST API endpoint.
     # Replace with provider-specific API calls.
     endpoint = os.environ.get('SUNO_ENDPOINT', 'https://api.suno.ai/v1/generate')
