@@ -1,0 +1,91 @@
+name: AI music → Blob → Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      AZURE_BLOB_CONTAINER: musicfiles
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f scripts/requirements.txt ]; then pip install -r scripts/requirements.txt; fi
+
+      - name: Generate audio (Suno or fallback demo)
+        env:
+          SUNO_API_KEY: ${{ secrets.SUNO_API_KEY }}
+        run: |
+          set -e
+          # try to run the project's generator; fall back to demo generator if it fails
+          if [ -f scripts/generate_and_package.py ]; then
+            python scripts/generate_and_package.py || true
+          fi
+          if [ -f scripts/gen_demo_wav.py ]; then
+            python scripts/gen_demo_wav.py || true
+          fi
+
+      - name: Upload media to Azure Blob (if storage creds present)
+        if: env.AZURE_STORAGE_CONNECTION_STRING != '' || (env.AZURE_STORAGE_ACCOUNT != '' && env.AZURE_STORAGE_KEY != '')
+        env:
+          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
+          AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+          AZURE_BLOB_CONTAINER: ${{ env.AZURE_BLOB_CONTAINER }}
+        run: |
+          if [ -f scripts/upload_media_to_blob.py ]; then
+            python scripts/upload_media_to_blob.py
+          else
+            echo "upload script not found, skipping"
+          fi
+
+      - name: Generate music_data.json (use blob URLs when AZURE_STORAGE_ACCOUNT is set)
+        env:
+          AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
+          AZURE_BLOB_CONTAINER: ${{ env.AZURE_BLOB_CONTAINER }}
+        run: |
+          if [ -f scripts/scan_write_music_data_blob.py ]; then
+            python scripts/scan_write_music_data_blob.py
+          else
+            echo "scan script not found, skipping"
+          fi
+
+      - name: Package publish folder
+        run: |
+          python - <<'PY'
+import shutil, sys
+shutil.make_archive('deploy_package','zip','publish')
+print('Created deploy_package.zip')
+PY
+
+      - name: Upload package as artifact (for debugging)
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy_package
+          path: deploy_package.zip
+
+      - name: Deploy to Azure Web App (ZipDeploy)
+        if: secrets.AZURE_PUBLISH_PROFILE != ''
+        uses: azure/webapps-deploy@v2
+        with:
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          package: deploy_package.zip
+
+      - name: Skip deploy note
+        if: secrets.AZURE_PUBLISH_PROFILE == ''
+        run: echo "AZURE_PUBLISH_PROFILE secret not set — package created and uploaded as artifact but not deployed. Set AZURE_PUBLISH_PROFILE to enable ZipDeploy."
