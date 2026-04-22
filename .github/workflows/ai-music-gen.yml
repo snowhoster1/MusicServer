@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     # Inject secrets at job level so they appear in env for steps (masked by GitHub)
     env:
+      # Support either secret name: SUNO_API_KEY (preferred) or SUNO_KEY (existing)
       SUNO_API_KEY: ${{ secrets.SUNO_API_KEY }}
+      SUNO_KEY: ${{ secrets.SUNO_KEY }}
       AZURE_PUBLISH_PROFILE: ${{ secrets.AZURE_PUBLISH_PROFILE }}
       SUNO_ENDPOINT: ${{ secrets.SUNO_ENDPOINT }}
 
@@ -24,9 +26,14 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Check required secrets
+      - name: Preflight: ensure secrets available and normalize SUNO_API_KEY
         run: |
           echo "Checking required secrets are present (masked output)..."
+          # If SUNO_API_KEY is empty but SUNO_KEY exists, promote it to SUNO_API_KEY
+          if [ -z "$SUNO_API_KEY" ] && [ -n "$SUNO_KEY" ]; then
+            echo "PROMOTING SUNO_KEY -> SUNO_API_KEY"  
+            echo "SUNO_API_KEY=$SUNO_KEY" >> $GITHUB_ENV
+          fi
           if [ -z "$SUNO_API_KEY" ]; then
             echo "ERROR: SUNO_API_KEY is empty or not available to this run. Ensure the secret exists at repository-level and you are running the workflow on the repository (not a fork)."
             exit 1
