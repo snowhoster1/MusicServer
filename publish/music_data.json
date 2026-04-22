@@ -1,0 +1,131 @@
+[
+  {
+    "Id": 1,
+    "FileName": "song_yiyi_chinese.mp3",
+    "OriginalFileName": "song_yiyi_chinese.mp3",
+    "Category": "中文",
+    "CreatedAt": "2026-03-21T20:38:00",
+    "FileSize": 960621,
+    "Description": "獻給 YiYi 的中文歌（有歌詞）",
+    "Lyrics": "YiYi  YiYi 親愛的你\n每天每天都想著你\n春天風兒吹過心裡\n你是我的小確幸"
+  },
+  {
+    "Id": 2,
+    "FileName": "banyan_tree_song.mp3",
+    "OriginalFileName": "banyan_tree_song.mp3",
+    "Category": "路邊一棵榕樹下",
+    "CreatedAt": "2026-03-22T21:43:00",
+    "FileSize": 960621,
+    "Description": "路邊一棵榕樹下的回憶（有歌詞）",
+    "Lyrics": "路邊一棵榕樹下\n記得我們的童年\n夏天乘涼聊天\n那是最快樂的時光"
+  },
+  {
+    "Id": 3,
+    "FileName": "spring_morning_song.mp3",
+    "OriginalFileName": "spring_morning_song.mp3",
+    "Category": "春天",
+    "CreatedAt": "2026-03-22T08:15:00",
+    "FileSize": 2048877,
+    "Description": "春天的早晨（有歌詞）",
+    "Lyrics": "春天的早晨陽光溫暖\n鳥兒歌唱花兒綻放\n走在路上心情舒暢\n美好的一天就這樣開始"
+  },
+  {
+    "Id": 4,
+    "FileName": "linlin_official.mp3",
+    "OriginalFileName": "linlin_official.mp3",
+    "Category": "霖霖",
+    "CreatedAt": "2026-03-23T18:54:00",
+    "FileSize": 656877,
+    "Description": "霖霖之歌（有歌詞男聲）",
+    "Lyrics": "霖霖是個厲害的工程師\n寫程式是他的日常\n從早到晚都在debug\n他是程式界的英雄"
+  },
+  {
+    "Id": 5,
+    "FileName": "ai_lobster_song.mp3",
+    "OriginalFileName": "ai_lobster_song.mp3",
+    "Category": "AI小龍蝦",
+    "CreatedAt": "2026-03-22T23:00:00",
+    "FileSize": 960621,
+    "Description": "AI小龍蝦之歌",
+    "Lyrics": ""
+  },
+  {
+    "Id": 6,
+    "FileName": "dinner_blues.mp3",
+    "OriginalFileName": "dinner_blues.mp3",
+    "Category": "晚上吃什麼",
+    "CreatedAt": "2026-03-23T05:54:00",
+    "FileSize": 2320749,
+    "Description": "晚上吃什麼的煩惱",
+    "Lyrics": ""
+  },
+  {
+    "Id": 7,
+    "FileName": "linlin_song.mp3",
+    "OriginalFileName": "linlin_song.mp3",
+    "Category": "霖霖",
+    "CreatedAt": "2026-03-23T18:42:00",
+    "FileSize": 3008877,
+    "Description": "關於厲害的電腦工程師霖霖",
+    "Lyrics": ""
+  },
+  {
+    "Id": 8,
+    "FileName": "dont_want_work.mp3",
+    "OriginalFileName": "dont_want_work.mp3",
+    "Category": "不想上班",
+    "CreatedAt": "2026-03-23T19:18:00",
+    "FileSize": 656877,
+    "Description": "不想上班（改編飛鳥和蟬）",
+    "Lyrics": "你說鬧鐘最對罪惡\n如咖啡灑在鍵盤上\n星期一的早上我睜開眼\n我們有遲到的時間"
+  },
+  {
+    "Id": 9,
+    "FileName": "cat_song.mp3",
+    "OriginalFileName": "cat_song.mp3",
+    "Category": "喵喵歌",
+    "CreatedAt": "2026-03-23T23:19:00",
+    "FileSize": 656877,
+    "Description": "喵喵歌（有歌詞）",
+    "Lyrics": "喵喵喵 喵喵喵\n小貓咪 快過來\n毛茸茸的身體 萌萌的大眼睛"
+  },
+  {
+    "Id": 10,
+    "FileName": "meow_song.mp3",
+    "OriginalFileName": "meow_song.mp3",
+    "Category": "貓貓歌",
+    "CreatedAt": "2026-03-24T06:30:00",
+    "FileSize": 656877,
+    "Description": "貓貓歌（有歌詞）",
+    "Lyrics": "小貓小貓 喵喵叫\n跳上沙發 蹭蹭腳\n呼嚕呼嚕 撒嬌娇\n你是我的心肝寶貝"
+  },
+  {
+    "Id": 11,
+    "FileName": "song_for_yiyi_v2.mp3",
+    "OriginalFileName": "song_for_yiyi_v2.mp3",
+    "Category": "給 YiYi",
+    "CreatedAt": "2026-03-25T01:02:00",
+    "FileSize": 656877,
+    "Description": "給 YiYi 的歌",
+    "Lyrics": "YiYi  YiYi 我愛你\n你是我的唯一\n每天只想著你\n我的心只為你跳動"
+  },
+  {
+    "Id": 12,
+    "FileName": "dont_want_work_v2.mp3",
+    "OriginalFileName": "dont_want_work_v2.mp3",
+    "Category": "不想上班",
+    "CreatedAt": "2026-03-26T06:52:00",
+    "FileSize": 928749,
+    "Description": "不想上班 V2",
+    "Lyrics": "星期一早上的鬧鐘\n就像犯罪的警報\n我只想躲在被子裡\n繼續做我的白日夢\n\n不想上班不想上班\n只想在家發懶\n老板的任務太繁重\n我的心情好沉重"
+  },
+  {
+    "Id": 13,
+    "FileName": "今天可以不去嗎.mp3",
+    "OriginalFileName": "今天可以不去嗎.mp3",
+    "Category": "中文",
+    "CreatedAt": "2026-03-27T20:44:49+08:00",
+    "FileSize": 118,
+    "Description": "Demo song added via PR"
+  }
+]
