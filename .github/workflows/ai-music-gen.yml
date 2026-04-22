@@ -9,6 +9,12 @@ on:
 jobs:
   generate-and-deploy:
     runs-on: ubuntu-latest
+    # Inject secrets at job level so they appear in env for steps (masked by GitHub)
+    env:
+      SUNO_API_KEY: ${{ secrets.SUNO_API_KEY }}
+      AZURE_PUBLISH_PROFILE: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+      SUNO_ENDPOINT: ${{ secrets.SUNO_ENDPOINT }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,17 +24,37 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Check required secrets
+        run: |
+          echo "Checking required secrets are present (masked output)..."
+          if [ -z "$SUNO_API_KEY" ]; then
+            echo "ERROR: SUNO_API_KEY is empty or not available to this run. Ensure the secret exists at repository-level and you are running the workflow on the repository (not a fork)."
+            exit 1
+          fi
+          if [ -z "$AZURE_PUBLISH_PROFILE" ]; then
+            echo "ERROR: AZURE_PUBLISH_PROFILE is empty or not available to this run."
+            exit 1
+          fi
+          echo "Required secrets appear present."
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r scripts/requirements.txt
 
       - name: Generate music (Suno or fallback)
-        env:
-          SUNO_API_KEY: ${{ secrets.SUNO_API_KEY }}
-          SUNO_ENDPOINT: ${{ secrets.SUNO_ENDPOINT }} # optional, provider endpoint
         run: |
           python scripts/generate_and_package.py --out-dir ./publish --title "automated-song"
+
+      - name: Create deploy package
+        run: |
+          # create zip in same format used earlier
+          python - <<'PY'
+import shutil, os
+root='.'
+shutil.make_archive('deploy_package','zip','publish')
+print('deploy_package.zip created')
+PY
 
       - name: Deploy to Azure App Service (Zip Deploy)
         uses: azure/webapps-deploy@v2
